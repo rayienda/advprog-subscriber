@@ -95,3 +95,17 @@ In this case, we use RwLock because there are usually way more reads than writes
 Unlike Java, Rust doesn’t let us change static values freely because it wants to keep things safe from data bugs and memory issues. In Java, you can call a static method and update the value without much worry. But Rust makes sure that shared data is only changed in a safe way, especially when different threads might use it at the same time. That’s why we need help from something like lazy_static to sets things up properly so the data can be used safely.
 
 #### Reflection Subscriber-2
+
+1. Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.
+
+I haven’t explored beyond the tutorial steps yet. I focused on the files directly related to the tasks, like the modules for the controller, service, repository, and model, as those were highlighted in the tutorial. Since lib.rs wasn’t mentioned in the steps, I prioritized finishing the guided tasks before exploring other additional files.
+
+2. Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?
+
+The Observer pattern makes it really simple to add more subscribers to the system. Since each subscriber is just an instance that listens for updates from the Publisher, adding a new one is as easy as subscribing it to the relevant product type. The separation between the Publisher and Receiver apps also means new subscribers don’t require changes to the core logic, they just "plug in" via their URL and can start receiving updates.
+
+As for spawning multiple instances of the Main app, it would still be fairly straightforward. The system is designed to be modular, so adding more Publisher instances or changing existing ones would just require configuring the environment and ensuring each instance runs on a different port. The flexibility of the Observer pattern allows you to easily manage these instances without much complexity.
+
+3. Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+
+I haven’t tried to create my own tests or improve the documentation in the Postman collection yet. I concentrated on finishing the tutorial tasks and implementing the necessary functionality. However, I recognize that these features would be helpful for making sure the API behaves as expected.
